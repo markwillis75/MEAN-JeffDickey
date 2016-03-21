@@ -3,19 +3,36 @@
 <head>
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 </head>
-<body>
-	<div class='container'>
+<!-- Declare body as an angular app-->
+<body ng-app='app'>
+	<div ng-controller='PostsCtrl' class='container'>
 		<h1> Recent posts</h1>
 		<ul class='list-group'>
-			<li class='list-group-item'>
-				<strong>@dickey</strong>
-				<span>Node rules!</span>
-			</li>
-			<li class='list-group-item'>
-				<strong>@jeffdickey</strong>
-				<span>trying out angular.js</span>
+			<li ng-repeat='post in posts' class='list-group-item'>
+				<strong>{{post.username}}</strong>
+				<span>{{post.body}}</span>
 			</li>
 		</ul>
 	</div>
+
+	<!-- Import angular.js-->
+	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js'></script>
+
+	<!-- Write the angular script -->
+	<script>
+	    var app=angular.module('app', [])
+	    app.controller('PostsCtrl', function($scope){
+	    	$scope.posts = [
+	    	    {
+	    	    	username: '@dickeyxxx',
+	    	    	body: 'Node rules!'
+	    	    },
+	    	    {
+	    	    	username: '@jeffdickey',
+	    	    	body: 'trying out angular.js'
+	    	    }
+	    	]
+	    })
+	</script>
 </body>
 </html>
