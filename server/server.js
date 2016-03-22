@@ -7,7 +7,9 @@ app.use(bodyparser.json())
 var Post = require('./models/post')
 
 app.get('/api/posts', function(req, res, next){
-	Post.find(function(err, posts){
+	Post.find()
+	.sort('-date')
+	.exec(function(err, posts){
 		if (err){
 			return next(err)
 		}
@@ -27,6 +29,13 @@ app.post('/api/posts', function(req, res, next){
 		}
 		res.status(201).json(post)
 	})
+})
+
+//Serve layout/posts.html as the landing page
+//The book uses sendfile instead of sendFile.  sendfile is deprecated
+//When using sendFile, we need to use an absolute path or specify root
+app.get('/', function(req, res){
+	res.sendFile('layouts/posts.html', {"root": __dirname})
 })
 
 app.listen(3000, function(){
