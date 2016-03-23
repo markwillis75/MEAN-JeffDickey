@@ -1,4 +1,6 @@
-var router = require('express').Router()
+var express = require('express')
+var router = express.Router()
+router.use(express.static(__dirname + '/../assets'))
 
 //Serve layout/posts.html as the landing page
 //The book uses sendfile instead of sendFile.  sendfile is deprecated
