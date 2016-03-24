@@ -7,7 +7,7 @@ fs.readdirSync(__dirname + '/gulp')
     	require('./gulp/' + task)
     })
 
-gulp.task('dev', ['watch:css', 'watch:js'])
+gulp.task('dev', ['watch:css', 'watch:js', 'dev:server'])
 
 gulp.task('watch:css', function(){
 	gulp.watch('css/**/*.styl', ['css'])
