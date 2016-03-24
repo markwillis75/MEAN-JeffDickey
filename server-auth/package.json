@@ -1,0 +1,8 @@
+{
+  "name": "authenticationapp",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "jwt-simple": "^0.5.0"
+  }
+}
