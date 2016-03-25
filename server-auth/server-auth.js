@@ -25,12 +25,14 @@ app.post('/user', function(req, res, next){
 
 // logging a user in, return jwt token or 401
 app.post('/session', function(req, res, next){
-	User.findOne({username: req.body.username}, function(err, user){
-		if (err){
-			return next(err)
+	User.findOne({username: req.body.username})
+	.select('username password') //password is not selected by default - we need to explictly select it
+	.exec(function(err, user){
+    	if (err){
+	    	return next(err)
 		}
 
-		if (!user){
+	    if (!user){
 			return res.sendStatus(401)
 		}
 
