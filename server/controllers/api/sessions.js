@@ -13,12 +13,8 @@ router.post('/', function(req, res, next) {
             }
 
             if (!user) {
-                console.log("user not found")
                 return res.sendStatus(401)
             }
-
-            console.log(req.body.password)
-            console.log(user.password)
 
             bcrypt.compare(req.body.password, user.password, function(err, valid) {
                 if (err) {
