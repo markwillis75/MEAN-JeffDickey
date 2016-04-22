@@ -7,6 +7,15 @@ angular.module('app')
             return $http.get('/api/users').
             then(function(response) {
                 return response.data
+            });
+        };
+
+        svc.registerUser = function(username, password){
+            return $http.post('api/users', {
+                username: username,
+                password: password
+            }).then(function(response) {
+                svc.login(username, password)
             })
         }
 
