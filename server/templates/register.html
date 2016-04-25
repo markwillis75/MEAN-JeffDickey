@@ -1,5 +1,5 @@
 <div class='container'>
-    <form ng-submit='register(name, password)'>
+    <form ng-submit='register(username, password, passwordConfirm)'>
     	<div class='form-group'>
     		<label>Username</label>
     		<input class='form-control' type='text' ng-model='username'>
@@ -12,6 +12,6 @@
     		<label>Confirm Password</label>
     		<input class='form-control' type='password' ng-model='passwordConfirm'>
     	</div>
-        <input class='btn btn-success btn-lg btn-block' type='submit' value='Register'>
+        <input ng-disabled='!detailsValid()' class='btn btn-success btn-lg btn-block' type='submit' value='Register'>
     </form>
 </div>

@@ -2,7 +2,7 @@
 	<h1> Recent posts</h1>
 
 	<form role='form'>
-		<div class='form-group'>
+		<div ng-if='currentUser' class='form-group'>
 			<div class='input-group'>
 				<input ng-model='postBody' class='form-control'/>
 				<span class='input-group-btn'>
