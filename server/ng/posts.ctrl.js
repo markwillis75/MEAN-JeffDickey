@@ -13,6 +13,10 @@ app.controller('PostsCtrl', function($scope, PostsSvc){
         }
     }
 
+    $scope.canPost = function(){
+        return $scope.currentUser
+    }
+
 	// starting data
 	PostsSvc.fetch()
 	.success(function(posts){
