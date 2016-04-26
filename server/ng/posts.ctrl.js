@@ -17,6 +17,12 @@ app.controller('PostsCtrl', function($scope, PostsSvc){
         return $scope.currentUser
     }
 
+    $scope.$on('ws:new_post', function(_, post){
+        $scope.$apply(function(){
+            $scope.posts.unshift(post)
+        })
+    })
+
 	// starting data
 	PostsSvc.fetch()
 	.success(function(posts){
