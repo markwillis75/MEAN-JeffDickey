@@ -7,7 +7,6 @@ app.controller('PostsCtrl', function($scope, PostsSvc){
                 body: $scope.postBody
             })
             .success(function(post){
-            $scope.posts.unshift(post)
             $scope.postBody = null
         })
         }
