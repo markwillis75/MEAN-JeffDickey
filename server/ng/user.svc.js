@@ -14,8 +14,8 @@ angular.module('app')
             return $http.post('api/users', {
                 username: username,
                 password: password
-            }).then(function(response) {
-                svc.login(username, password)
+            }).then(function() {
+                return svc.login(username, password)
             })
         }
 
