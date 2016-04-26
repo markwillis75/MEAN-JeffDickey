@@ -1,5 +1,6 @@
 var Post = require('../../models/post')
 var router = require('express').Router()
+var websocket = require('./../../websockets')
 
 // get all posts
 router.get('/', function(req, res, next){
@@ -22,6 +23,7 @@ router.post('/', function(req, res, next){
 		if (err){
 			return next(err)
 		}
+		websocket.broadcast('new_post', post)
 		res.status(201).json(post)
 	})
 })
